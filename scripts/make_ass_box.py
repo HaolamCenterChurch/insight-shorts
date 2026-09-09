@@ -113,9 +113,8 @@ def main():
     ap.add_argument("--duration", type=float, required=True)
     ap.add_argument("--font", default="Apple SD Gothic Neo")
     ap.add_argument("--fs", type=int, default=96, help="한글 글자 크기(pt)")
-    ap.add_argument("--pos-y", type=int, default=1240,
-                    help="자막 중심 Y (1920 기준). 960 이 정중앙이지만 자료 아래쪽을 "
-                         "비워두려고 조금 내려 잡는다")
+    ap.add_argument("--pos-y", type=int, default=1420,
+                    help="자막 중심 Y (1920 기준, 기본 1420: 자료화면 하단 Y=1280 아래 순검정 영역)")
     ap.add_argument("--box", default="&H1A000000",
                     help="박스 색 &HAABBGGRR — AA 00 이 완전 불투명")
     ap.add_argument("--pad", type=float, default=14.0, help="박스 여백(px)")
@@ -126,12 +125,15 @@ def main():
                          "둘째 줄은 --title-hl-color 로 강조된다(오너 지시 2026-09-07)")
     ap.add_argument("--title-hl-color", default="&H0000D7FF",
                     help="제목 둘째 줄 색(기본 골드)")
-    ap.add_argument("--title-y", type=int, default=210)
-    ap.add_argument("--title-fs", type=int, default=58)
-    ap.add_argument("--title-color", default="&H0000D7FF")
-    ap.add_argument("--title-box", default=None,
-                    help="제목 박스 색(기본: 본문 박스와 같은 색). 검정 배경에서는 "
-                         "&H00000000 로 두면 박스가 배경에 묻혀 글자만 보인다")
+    ap.add_argument("--title-y", type=int, default=360,
+                    help="제목 중심 Y (1920 기준, 기본 360: 자료 상단과 자연스러운 여백 밀착)")
+    ap.add_argument("--title-fs", type=int, default=120,
+                    help="제목 글자 크기(pt, 기본 120)")
+    ap.add_argument("--title-color", default="&H00FFFFFF",
+                    help="제목 첫째 줄 색(기본 순백)")
+    ap.add_argument("--title-box", default="&H00000000",
+                    help="제목 박스 색(기본: &H00000000 완전불투명 검정). 검정 배경에서는 "
+                         "글자만 깔끔하게 노출")
     ap.add_argument("--title-pad", type=float, default=12.0)
     ap.add_argument("--title-max-chars", type=int, default=16,
                     help="제목 한 줄 최대 글자 수 — 넘으면 두 줄로 나눈다")
